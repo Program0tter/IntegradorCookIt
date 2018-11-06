@@ -6,14 +6,15 @@ namespace Dominio
 {
     public class Usuario
     {
-        int _Id;
-        String _Nombre;
-        String _Email;
-        String _Pass;
-        String _Foto;
+        public int _Id;
+        public string _Email;
+        public string _Pass;
+        public string _Foto;
+        public string _SobreNombre;
+        public string _Nombre;
+        public string _Apellido;
 
-        
-
+        List<IngredienteConCantidad> _MisIngredientes;
         List<RecetaConFecha> historialRecetas;
         List<RecetaConFecha> recetasFavoritas;
     }
