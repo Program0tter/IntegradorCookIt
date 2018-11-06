@@ -15,6 +15,8 @@ namespace Dominio
         //1 = mg, 2 = ml
         public enum TipoMedida { Mg = 1, Ml = 2 }
 
+
+
         public Estacion _Estacion { set; get; }
         public Tipo _Tipo { set; get; }
 
