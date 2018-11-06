@@ -12,7 +12,7 @@ namespace Dominio
         string _Pass;
         string _Foto;
 
-        List<RecetaConFecha> historialRecetas;
-        List<RecetaConFecha> recetasFavoritas;
+        List<RecetaConFecha> _HistorialRecetas;
+        List<RecetaConFecha> _RecetasFavoritas;
     }
 }
