@@ -7,12 +7,10 @@ namespace Dominio
     public class Usuario
     {
         int _Id;
-        String _Nombre;
-        String _Email;
-        String _Pass;
-        String _Foto;
-
-        
+        string _Nombre;
+        string _Email;
+        string _Pass;
+        string _Foto;
 
         List<RecetaConFecha> historialRecetas;
         List<RecetaConFecha> recetasFavoritas;
