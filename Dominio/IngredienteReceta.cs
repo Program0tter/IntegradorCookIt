@@ -6,7 +6,7 @@ namespace Dominio
 {
     public class IngredienteReceta
     {
-        private Ingrediente ingrediente;
-        private int cantidad;
+        private Ingrediente _Ingrediente;
+        private int _Cantidad;
     }
 }

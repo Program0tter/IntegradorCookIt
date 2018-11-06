@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{66DD3419-AE0D-4608-942C-4726F4BFFD02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dominio", "Dominio\Dominio.csproj", "{66DD3419-AE0D-4608-942C-4726F4BFFD02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolaTest", "ConsolaTest\ConsolaTest.csproj", "{8093B56A-48DF-484B-A50C-CBF9339A5992}"
+	ProjectSection(ProjectDependencies) = postProject
+		{66DD3419-AE0D-4608-942C-4726F4BFFD02} = {66DD3419-AE0D-4608-942C-4726F4BFFD02}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{66DD3419-AE0D-4608-942C-4726F4BFFD02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66DD3419-AE0D-4608-942C-4726F4BFFD02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66DD3419-AE0D-4608-942C-4726F4BFFD02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8093B56A-48DF-484B-A50C-CBF9339A5992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8093B56A-48DF-484B-A50C-CBF9339A5992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8093B56A-48DF-484B-A50C-CBF9339A5992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8093B56A-48DF-484B-A50C-CBF9339A5992}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
