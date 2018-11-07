@@ -6,7 +6,8 @@ namespace Dominio
 {
     class IngredienteConCantidad
     {
-        Ingrediente _Ingrediente;
-        int _Cantidad;
+        Ingrediente _Ingrediente { get; set; }
+        int _Cantidad { get; set; }
+        
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Drawing;
 
 namespace Dominio
 {
@@ -13,7 +14,7 @@ namespace Dominio
         string _NombreUsuario;
         string _Nombre;
         string _Apellido;
-
+        
         public Usuario(int Id, string Email, string Pass, string Foto, string NombreUsuario, string Nombre, string Apellido) {
             _Id = Id;
             _Email = Email;

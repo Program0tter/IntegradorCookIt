@@ -53,7 +53,7 @@ namespace Dominio
         }
 
         public Receta(int MomentoDia, int Estacion, int Dificultad, int TiempoPreparacion, string PaisOrigen, string Foto, Usuario Creador, int CantPlatos, float Costo,
-    DateTime FechaCreacion, float PuntajeTotal, bool AptoCeliacos, bool AptoDiabeticos, bool AptoVegetarianos, bool AptoVeganos, bool Habilitada)
+            DateTime FechaCreacion, float PuntajeTotal, bool AptoCeliacos, bool AptoDiabeticos, bool AptoVegetarianos, bool AptoVeganos, bool Habilitada)
         {     
             _MomentoDia = (MomentoDia)MomentoDia;
             _Estacion = (Ingrediente.Estacion)Estacion;
