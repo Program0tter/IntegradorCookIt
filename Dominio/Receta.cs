@@ -47,17 +47,34 @@ namespace Dominio
             _AptoCeliacos = AptoCeliacos;
             _AptoDiabeticos = AptoDiabeticos;
             _AptoVegetarianos = AptoVegetarianos;
+            _AptoVeganos = AptoVeganos;            
+            _Habilitada = (Creador.QueSoy().Equals("Administrador")) ? true : false;
+
+        }
+
+        public Receta(int MomentoDia, int Estacion, int Dificultad, int TiempoPreparacion, string PaisOrigen, string Foto, Usuario Creador, int CantPlatos, float Costo,
+    DateTime FechaCreacion, float PuntajeTotal, bool AptoCeliacos, bool AptoDiabeticos, bool AptoVegetarianos, bool AptoVeganos, bool Habilitada)
+        {     
+            _MomentoDia = (MomentoDia)MomentoDia;
+            _Estacion = (Ingrediente.Estacion)Estacion;
+            _Dificultad = Dificultad;
+            _TiempoPreparacion = TiempoPreparacion;
+            _PaisOrigen = PaisOrigen;
+            _Foto = Foto;
+            _Creador = Creador;
+            _CantPlatos = CantPlatos;
+            _Costo = Costo;
+            _FechaCreacion = FechaCreacion;
+            _PuntajeTotal = PuntajeTotal;
+            _AptoCeliacos = AptoCeliacos;
+            _AptoDiabeticos = AptoDiabeticos;
+            _AptoVegetarianos = AptoVegetarianos;
             _AptoVeganos = AptoVeganos;
-            
-            
-
-
-
-
-
-
+            _Habilitada = (Creador.QueSoy().Equals("Administrador")) ? true : false;
 
         }
 
     }
+
+
 }
