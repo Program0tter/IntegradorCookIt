@@ -14,8 +14,17 @@ namespace Dominio
         string _Nombre;
         string _Apellido;
 
-        public Usuario(int Id, string Email, string Pass, string Foto, string NombreUsuario, string Nombre, string Apellido) {
+        public Usuario(int Id, string Email, string Foto, string NombreUsuario, string Nombre, string Apellido) {
             _Id = Id;
+            _Email = Email;
+            _Pass = Pass;
+            _Foto = Foto;
+            _NombreUsuario = NombreUsuario;
+            _Nombre = Nombre;
+            _Apellido = Apellido;
+        }
+        public Usuario(string Email, string Pass, string Foto, string NombreUsuario, string Nombre, string Apellido)
+        {
             _Email = Email;
             _Pass = Pass;
             _Foto = Foto;
