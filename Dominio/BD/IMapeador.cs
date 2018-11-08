@@ -6,9 +6,9 @@ namespace Dominio.BD
 {
     public interface IMapeador
     {
-        void Insertar();
+        bool Insertar();
 
-        void Actualizar();
+        bool Actualizar();
 
         void Borrar();
 
