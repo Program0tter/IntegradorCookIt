@@ -10,6 +10,7 @@ namespace Dominio
         public string _Texto { set; get; }
         public int _TiempoReloj { set; get; }
         public string _UrlVideo { set; get; }
-        public 
+        //FALTA ESTO
+        public int imagen;
     }
 }
