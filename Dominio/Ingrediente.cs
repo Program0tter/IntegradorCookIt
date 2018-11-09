@@ -62,6 +62,5 @@ namespace Dominio
             _AptoVeganos = _AptoVeganos;
         }
 
-
     }
 }

@@ -107,7 +107,23 @@ namespace Dominio.BD
 
         public void GenerarObjetoPrincipal(SqlDataReader dr)
         {
-            throw new NotImplementedException();
+            while (dr.Read())
+            {
+                _Ing._Id = Convert.ToInt32(dr["id"]);
+                _Ing._Nombre = dr["nombre"].ToString();
+                _Ing._Costo = Convert.ToInt32(dr["costo"]);
+                _Ing._Medida = (Ingrediente.TipoMedida)dr["medida"];
+                _Ing._MedidaPromedio = Convert.ToInt32(dr["medidaPromedio"]);
+                _Ing._MedidaPorGramo  = Convert.ToInt32(dr["medidaPorGramo"]);
+                _Ing._CantCaloriasPorMedida = Convert.ToInt32(dr["cantCalorias"]);
+                _Ing._AptoCeliacos = Convert.ToBoolean(dr["aptoCeliacos"]);
+                _Ing._AptoDiabeticos = Convert.ToBoolean(dr["aptoDiabeticos"]);
+                _Ing._AptoVegetarianos = Convert.ToBoolean(dr["aptoVegetarianos"]);
+                _Ing._AptoVeganos = Convert.ToBoolean(dr["aptoVeganos"]);
+                _Ing._Tipo = (Ingrediente.Tipo)dr["tipo"];
+                _Ing._Estacion = (Ingrediente.Estacion)dr["estacion"];
+
+            }
         }
 
         public void GenerarObjetoSubordinado(SqlDataReader dr)
