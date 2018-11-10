@@ -1,9 +1,9 @@
-﻿using Dominio.BD;
+﻿using Persistencia;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
+
 using System.Text;
 
 namespace Dominio
@@ -42,6 +42,10 @@ namespace Dominio
         public abstract string QueSoy();
 
         public abstract object Login(string correo, string pass);
+
+
+
+        
 
     }
 }

@@ -71,6 +71,8 @@ BEGIN
 
     ELSE
        SET @respuesta = 0
+
+	RETURN @respuesta
 END
 
 create table IngredientesUsuarios(

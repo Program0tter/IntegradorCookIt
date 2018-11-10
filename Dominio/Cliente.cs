@@ -1,4 +1,4 @@
-﻿using Dominio.BD;
+﻿using Persistencia;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -42,20 +42,32 @@ namespace Dominio
         public override object Login(string correo, string pass)
         {
             Cliente cli = new Cliente();
+            int RequestStatus = -1;
 
             SqlConnection cn = ManejadorConexion.CrearConexion();
-            SqlCommand cmd = new SqlCommand(@"EXEC sp_login", cn);
+            SqlCommand cmd = new SqlCommand("sp_login", cn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@email", correo));
             cmd.Parameters.Add(new SqlParameter("@pass", pass));
-            cmd.Parameters.Add(new SqlParameter("@respuesta", SqlDbType.Bit) { Direction = ParameterDirection.Output });
+            //cmd.Parameters.Add(new SqlParameter("@respuesta", SqlDbType.Bit) { Direction = ParameterDirection.Output });
+
+            //SqlParameter ReturnValue = new SqlParameter("@respuesta", SqlDbType.Bit);
+            //ReturnValue.Direction = ParameterDirection.Output;
+            //cmd.Parameters.Add(ReturnValue);
+
+            cmd.Parameters.Add(new SqlParameter("@respuesta", SqlDbType.Bit) { Direction = ParameterDirection.ReturnValue });
 
             try
             {
                 ManejadorConexion.AbrirConexion(cn);
-                bool resultado = Convert.ToBoolean(cmd.ExecuteScalar());
+                cmd.ExecuteNonQuery();
+                RequestStatus = (int)cmd.Parameters["@respuesta"].Value;
 
-                if (resultado)
+                //int retorno = (int)cmd.ExecuteScalar();
+
+                //bool resultado = Convert.ToBoolean(retorno);
+
+                if (RequestStatus.Equals(1))
                 {
                     SqlCommand cmd2 = new SqlCommand(@"SELECT * FROM Usuario WHERE email = @email", cn);
                     cmd2.Parameters.Add(new SqlParameter("@email", correo));

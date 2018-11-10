@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
-using Dominio.BD;
+using Persistencia;
 
 namespace Dominio
 {
@@ -19,7 +19,7 @@ namespace Dominio
         public int _Dificultad { get; set; }
         public int _TiempoPreparacion { get; set; }
         public Pais _PaisOrigen { get; set; }
-        public string _Foto { get; set; }
+        public byte[] _Foto { get; set; }
         public Usuario _Creador { get; set; }
         public int _CantPlatos { get; set; }
         public float _Costo { get; set; }
@@ -34,7 +34,7 @@ namespace Dominio
         public List<PasoReceta> _Pasos { set; get; }
 
         //Constructor para traer de base de datos
-        public Receta(int Id, int MomentoDia,int Estacion, int Dificultad, int TiempoPreparacion, int PaisOrigen, string Foto, 
+        public Receta(int Id, int MomentoDia,int Estacion, int Dificultad, int TiempoPreparacion, int PaisOrigen, byte[] Foto, 
             Usuario Creador, int CantPlatos, float Costo, DateTime FechaCreacion, float PuntajeTotal, bool AptoCeliacos, 
             bool AptoDiabeticos, bool AptoVegetarianos, bool AptoVeganos, bool Habilitada, List<IngredienteReceta> Ingredientes, 
             List<PasoReceta> Pasos)
@@ -61,7 +61,7 @@ namespace Dominio
         }
 
         //Constructor para insercion en base de datos, el resto de los atributos se insertan por trigger en BD.
-        public Receta(int MomentoDia, int Estacion, int Dificultad, int TiempoPreparacion, int PaisOrigen, string Foto, Usuario Creador, 
+        public Receta(int MomentoDia, int Estacion, int Dificultad, int TiempoPreparacion, int PaisOrigen, byte[] Foto, Usuario Creador, 
             int CantPlatos, List<IngredienteReceta> Ingredientes, List<PasoReceta> Pasos)
         {     
             _MomentoDia = (MomentoDia) MomentoDia;

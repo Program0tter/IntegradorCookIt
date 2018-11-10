@@ -15,4 +15,10 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+  </ItemGroup>
+
 </Project>

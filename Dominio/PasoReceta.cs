@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
-using Dominio.BD;
+using Persistencia;
 
 namespace Dominio
 {
@@ -14,7 +14,7 @@ namespace Dominio
         public int _TiempoReloj { set; get; }
         public string _UrlVideo { set; get; }
         //FALTA ESTO
-        public Image imagen;
+        public byte[] imagen;
 
         public bool Insertar()
         {
