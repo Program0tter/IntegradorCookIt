@@ -107,8 +107,10 @@ namespace Dominio
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = @"UPDATE Ingredientes 
-                                SET nombre = @Nombre, costo = @Costo, medida = @Medida, medidaPromedio = @MedidaPromedio, medidaPorGramo = @MedidaPorGramo, 
-                                   cantCalorias = @CantCalorias, aptoCeliacos = @AptoCeliacos, aptoDiabeticos = @AptoDiabeticos, aptoVegetarianos = @AptoVegetarianos, 
+                                SET nombre = @Nombre, costo = @Costo, medida = @Medida, medidaPromedio = @MedidaPromedio, 
+                                   medidaPorGramo = @MedidaPorGramo, 
+                                   cantCalorias = @CantCalorias, aptoCeliacos = @AptoCeliacos, aptoDiabeticos = @AptoDiabeticos,
+                                   aptoVegetarianos = @AptoVegetarianos, 
                                    aptoVeganos = @AptoVeganos, tipo = @Tipo, estacion = @Estacion
                                 WHERE id = @Id";
             cmd.Parameters.Add(new SqlParameter("@Id", _Id));

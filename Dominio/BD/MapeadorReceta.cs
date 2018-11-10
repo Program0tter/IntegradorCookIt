@@ -52,7 +52,7 @@ namespace Dominio.BD
             {
                 ManejadorConexion.AbrirConexion(cn);
                 int idReceta = (int) cmd.ExecuteScalar();
-
+                return true;
             }
             catch (SqlException ex)
             {
@@ -65,6 +65,11 @@ namespace Dominio.BD
                 trn.Dispose();
                 ManejadorConexion.CerrarConexion(cn);
             }
+        }
+
+        bool IMapeador.Borrar()
+        {
+            throw new NotImplementedException();
         }
     }
 }

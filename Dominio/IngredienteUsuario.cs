@@ -89,5 +89,11 @@ namespace Dominio
                 ManejadorConexion.CerrarConexion(cn);
             }
         }
+
+        internal static List<IngredienteUsuario> TraerConIdUsuario(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
+   
 }

@@ -14,7 +14,7 @@ namespace Dominio
         public int _TiempoReloj { set; get; }
         public string _UrlVideo { set; get; }
         //FALTA ESTO
-        public int imagen;
+        public Image imagen;
 
         public bool Insertar()
         {

@@ -1,7 +1,7 @@
 drop table FiltrosUsuarios
 drop table HistorialUsuarios
-drop table PerfilUsuarios 
 drop table SeguidoresUsuarios
+drop table IngredientesUsuarios
 drop table ReportesRecetas
 drop table ComentariosRecetas
 drop table IngredientesRecetas
@@ -10,11 +10,16 @@ drop table RecetasFavoritasUsuarios
 drop table Recetas
 drop table Usuarios
 
+
 create table Usuarios(
 id int identity(1,1) primary key,
 email varchar(300) unique not null,
 pass nvarchar(64) not null,
 salt uniqueidentifier,
+nombre varchar(200),
+apellido varchar(200),
+nombreUsuario varchar(200) UNIQUE NOT null,
+foto varbinary(max),
 tipo int foreign key references TiposUsuarios(id) not null
 )
 
@@ -26,8 +31,9 @@ BEGIN
 	DECLARE @salt UNIQUEIDENTIFIER = NEWID()
 	SET NOCOUNT ON
 	BEGIN 
-		INSERT INTO Usuarios (email, pass, tipo, salt)
-		SELECT inserted.email, HASHBYTES('SHA2_512', inserted.pass + CAST(@salt AS NVARCHAR(36))), inserted.tipo, @salt
+		INSERT INTO Usuarios (email, pass, tipo, salt, nombreUsuario)
+		SELECT inserted.email, HASHBYTES('SHA2_512', inserted.pass + CAST(@salt AS NVARCHAR(36))), inserted.tipo, @salt, 
+		inserted.email
 		FROM inserted
 	END
 END
@@ -67,6 +73,12 @@ BEGIN
        SET @respuesta = 0
 END
 
+create table IngredientesUsuarios(
+idUsuario int foreign key references Usuarios(id),
+idIngrediente int foreign key references Ingredientes(id),
+cantidad int not null,
+primary key(idUsuario, idIngrediente)
+)
 
 create table TiposUsuarios(
 id int identity(1,1) primary key,
@@ -111,7 +123,7 @@ dificultad int not null,
 check(dificultad between 1 AND 5),
 tiempoPreparacion int not null,
 paisOrigen int foreign key references Paises(id),
-foto image,
+foto varbinary(max),
 idCreador int foreign key references Usuarios(id),
 cantPlatos int not null,
 cantCalorias int,
@@ -356,7 +368,7 @@ idPaso int identity(1,1),
 texto varchar(500) not null,
 tiempoReloj time,
 urlVideo varchar(500),
-imagen image,
+foto varbinary(max),
 primary key(idReceta, idPaso)
 )
 
@@ -400,16 +412,6 @@ BEGIN
 		ins.idReceta = Recetas.id 
 END
 
-
-create table Perfil
-(
-idUsuario int foreign key references Usuarios(id),
-nombre varchar(200) not null,
-apellido varchar(200) not null,
-nombreUsuario varchar(200),
-foto image,
-primary key(idUsuario)
-)
 
 create table HistorialUsuarios(
 idUsuario int foreign key references Usuarios(id),

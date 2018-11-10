@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Dominio
 {
-    public class IngredienteConCantidad
+    public abstract class IngredienteConCantidad
     {
 
         public Ingrediente _Ingrediente { get; set; }

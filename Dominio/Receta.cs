@@ -30,8 +30,8 @@ namespace Dominio
         public bool _AptoVegetarianos { get; set; }
         public bool _AptoVeganos { get; set; }
         public bool _Habilitada { get; set; }
-        public List<IngredienteReceta> _Ingredientes;
-        public List<PasoReceta> _Pasos;
+        public List<IngredienteReceta> _Ingredientes { set; get; }
+        public List<PasoReceta> _Pasos { set; get; }
 
         //Constructor para traer de base de datos
         public Receta(int Id, int MomentoDia,int Estacion, int Dificultad, int TiempoPreparacion, int PaisOrigen, string Foto, 
@@ -57,10 +57,10 @@ namespace Dominio
             _AptoVeganos = AptoVeganos;
             _Habilitada = Habilitada;
             _Ingredientes = Ingredientes;
-            _Pasos = Pasos;
+            _Pasos = Pasos;           
         }
 
-        //Constructor para insercion en base de datos
+        //Constructor para insercion en base de datos, el resto de los atributos se insertan por trigger en BD.
         public Receta(int MomentoDia, int Estacion, int Dificultad, int TiempoPreparacion, int PaisOrigen, string Foto, Usuario Creador, 
             int CantPlatos, List<IngredienteReceta> Ingredientes, List<PasoReceta> Pasos)
         {     
@@ -86,6 +86,7 @@ namespace Dominio
             throw new NotImplementedException();
         }
 
+        //Las clases subordinadas PasoReceta y IngredienteReceta se borran por trigger de BD.
         public bool Borrar()
         {
             throw new NotImplementedException();

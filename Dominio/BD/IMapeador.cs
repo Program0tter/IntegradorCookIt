@@ -11,7 +11,5 @@ namespace Dominio.BD
         bool Actualizar();
 
         bool Borrar();
-
-
     }
 }

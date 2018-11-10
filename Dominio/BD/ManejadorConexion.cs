@@ -8,7 +8,7 @@ namespace Dominio.BD
 {
     public class ManejadorConexion
     {
-        private static string _CadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["conSomee"].ConnectionString;
+        private static string _CadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["AzureConnection"].ConnectionString;
 
         public static SqlConnection CrearConexion()
         {
