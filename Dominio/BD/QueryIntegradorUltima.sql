@@ -46,9 +46,9 @@ CREATE PROCEDURE sp_Login
     @email NVARCHAR(254),
     @pass NVARCHAR(50),
     @respuesta bit OUTPUT
+
 AS
 BEGIN
-
     SET NOCOUNT ON
 
     DECLARE @userID INT
@@ -65,7 +65,6 @@ BEGIN
 
     ELSE
        SET @respuesta = 0
-
 END
 
 
@@ -402,7 +401,8 @@ BEGIN
 END
 
 
-create table PerfilUsuarios(
+create table Perfil
+(
 idUsuario int foreign key references Usuarios(id),
 nombre varchar(200) not null,
 apellido varchar(200) not null,

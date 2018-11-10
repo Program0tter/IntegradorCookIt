@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio.BD;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,8 +7,13 @@ namespace Dominio
 {
     public class IngredienteConCantidad
     {
-        Ingrediente _Ingrediente { get; set; }
-        int _Cantidad { get; set; }
-        
+
+        public Ingrediente _Ingrediente { get; set; }
+        public int _Cantidad { get; set; }
+
+        public IngredienteConCantidad(Ingrediente Ing, int Cantidad){
+            _Ingrediente = Ing;
+            _Cantidad = Cantidad;
+        }
     }
 }

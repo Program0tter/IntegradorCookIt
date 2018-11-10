@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio.BD;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,6 +17,21 @@ namespace Dominio
         {
             int valor = (_Boolean) ? 1 : 0;
             return base.ToString() + " = " + valor;
+        }
+
+        public bool Insertar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Actualizar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Borrar()
+        {
+            throw new NotImplementedException();
         }
     }
 }

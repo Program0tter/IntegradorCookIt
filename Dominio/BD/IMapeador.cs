@@ -10,12 +10,8 @@ namespace Dominio.BD
 
         bool Actualizar();
 
-        void Borrar();
+        bool Borrar();
 
-        string Select();
 
-        void GenerarObjetoPrincipal(SqlDataReader dr);
-
-        void GenerarObjetoSubordinado(SqlDataReader dr);
     }
 }

@@ -28,7 +28,6 @@ namespace Dominio
             _Comentario = Comentario;
             _Fecha = Fecha;
             _Puntaje = Puntaje;
-
         }
     }
 }
