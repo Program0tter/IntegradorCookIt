@@ -18,6 +18,8 @@ namespace Dominio
         public string _Nombre { set; get; }
         public string _Apellido { set; get; }
 
+        public enum TipoUsuario { Administrador = 1 , Cliente = 2 };
+
         public Usuario() { }
 
         public Usuario(int Id, string Email, byte[] Foto, string NombreUsuario, string Nombre, string Apellido) {
@@ -39,7 +41,7 @@ namespace Dominio
         }
 
 
-        public abstract string QueSoy();
+        public abstract TipoUsuario QueSoy();
 
         public abstract object Login(string correo, string pass);
 

@@ -36,8 +36,8 @@ namespace Dominio
             _RecetasFavoritas = new List<RecetaFavorita>();
         }
 
-        public override string QueSoy() {
-            return "Cliente";
+        public override TipoUsuario QueSoy() {
+            return TipoUsuario.Cliente;
         }
         public override object Login(string correo, string pass)
         {
@@ -73,6 +73,7 @@ namespace Dominio
                             cli._Apellido = fila.IsDBNull(fila.GetOrdinal("apellido")) ? "" : fila.GetString(fila.GetOrdinal("apellido"));// dr["apellido"].ToString();
                             cli._NombreUsuario = fila.IsDBNull(fila.GetOrdinal("nombreUsuario")) ? "" : fila.GetString(fila.GetOrdinal("nombreUsuario")); // dr["nombreUsuario"].ToString();
                             cli._Foto = fila.IsDBNull(fila.GetOrdinal("foto")) ? null : (byte[])fila.GetValue(fila.GetOrdinal("foto")); // (byte[])dr["foto"]; (byte [])obj.GetValue(0)
+                            
                         }
                     }
                     //Tambien hay que rellenar las listas de ingredientes, recetas, etc.
@@ -104,12 +105,14 @@ namespace Dominio
             SqlConnection cn = ManejadorConexion.CrearConexion();
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = @"INSERT INTO Usuarios 
-                    VALUES (@email,@pass,@nombreUsuario,@tipo)";
+            cmd.CommandText = @"INSERT INTO Usuarios (email, pass, nombreUsuario, tipo) VALUES (@email, @pass, @nombreUsuario, @tipo)";
             cmd.Parameters.AddWithValue("@email", this._Email);
             cmd.Parameters.AddWithValue("@pass", this._Pass);
+            
+            
             cmd.Parameters.AddWithValue("@nombreUsuario", this._NombreUsuario);
-            cmd.Parameters.AddWithValue("@tipo", "");
+          
+            cmd.Parameters.AddWithValue("@tipo", this.QueSoy());
             cmd.Connection = cn;
             try
             {
@@ -141,9 +144,10 @@ namespace Dominio
             cmd.Parameters.AddWithValue("@email", this._Email);
             cmd.Parameters.AddWithValue("@nombre", this._Nombre);
             cmd.Parameters.AddWithValue("@apellido", this._Apellido);
-            cmd.Parameters.AddWithValue("@nombreUsuario", this._NombreUsuario);
-            cmd.Parameters.AddWithValue("@foto", this._Foto);
-            cmd.Parameters.AddWithValue("@tipo", "");
+            cmd.Parameters.AddWithValue("@nomUsu", this._NombreUsuario);
+            cmd.Parameters.AddWithValue("@foto", null);
+            //cmd.Parameters.AddWithValue("@foto", this._Foto);
+            cmd.Parameters.AddWithValue("@tipo", this.QueSoy());
             cmd.Connection = cn;
             try
             {

@@ -22,9 +22,9 @@ namespace Dominio
         {
         }
 
-        public override string QueSoy()
+        public override TipoUsuario QueSoy()
         {
-            return "Administrador";
+            return TipoUsuario.Administrador;
         }
 
         public override object Login(string correo, string pass)
@@ -74,5 +74,14 @@ namespace Dominio
             }
         }
 
+        public override bool Insertar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool ActualizarPerfil()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
