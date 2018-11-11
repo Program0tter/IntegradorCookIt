@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Persistencia;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 
 namespace Dominio.BD
 {
-    public class MapeadorReceta : IMapeador
+    public class MapeadorReceta
     {
         Receta _Receta { set; get; }
 
@@ -67,9 +68,5 @@ namespace Dominio.BD
             }
         }
 
-        bool IMapeador.Borrar()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

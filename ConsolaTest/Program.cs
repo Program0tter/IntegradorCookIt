@@ -7,6 +7,14 @@ namespace ConsolaTest
     {
         static void Main(string[] args)
         {
+
+
+
+            
+            Ingrediente ing = new Ingrediente("Pepegrillo5", 100, 1, 10, 10, 10, false, false, false, false, 1, 1);
+            ing.Insertar();
+
+            /*
             Cliente usr = new Cliente();
             try
             {
@@ -30,6 +38,7 @@ namespace ConsolaTest
             {
                 Console.WriteLine(ex.Message);
             }
+            */
         }
     }
 }

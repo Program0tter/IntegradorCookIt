@@ -13,10 +13,4 @@
     <ProjectReference Include="..\Persistencia\Persistencia.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="BD\Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-
 </Project>
