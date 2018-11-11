@@ -42,44 +42,39 @@ namespace Dominio
         public override object Login(string correo, string pass)
         {
             Cliente cli = new Cliente();
-            int RequestStatus = -1;
+            bool RequestStatus = false;
 
             SqlConnection cn = ManejadorConexion.CrearConexion();
-            SqlCommand cmd = new SqlCommand("sp_login", cn);
+            SqlCommand cmd = new SqlCommand("sp_Login", cn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@email", correo));
             cmd.Parameters.Add(new SqlParameter("@pass", pass));
-            //cmd.Parameters.Add(new SqlParameter("@respuesta", SqlDbType.Bit) { Direction = ParameterDirection.Output });
-
-            //SqlParameter ReturnValue = new SqlParameter("@respuesta", SqlDbType.Bit);
-            //ReturnValue.Direction = ParameterDirection.Output;
-            //cmd.Parameters.Add(ReturnValue);
-
-            cmd.Parameters.Add(new SqlParameter("@respuesta", SqlDbType.Bit) { Direction = ParameterDirection.ReturnValue });
+            cmd.Parameters.Add(new SqlParameter("@respuesta", SqlDbType.Bit) { Direction = ParameterDirection.Output });
 
             try
             {
                 ManejadorConexion.AbrirConexion(cn);
                 cmd.ExecuteNonQuery();
-                RequestStatus = (int)cmd.Parameters["@respuesta"].Value;
+                RequestStatus = (bool)cmd.Parameters["@respuesta"].Value;
 
-                //int retorno = (int)cmd.ExecuteScalar();
-
-                //bool resultado = Convert.ToBoolean(retorno);
-
-                if (RequestStatus.Equals(1))
+                if (RequestStatus)
                 {
-                    SqlCommand cmd2 = new SqlCommand(@"SELECT * FROM Usuario WHERE email = @email", cn);
-                    cmd2.Parameters.Add(new SqlParameter("@email", correo));
-                    SqlDataReader dr = cmd2.ExecuteReader();
-
-                    cli._Id = Convert.ToInt32(dr["id"]);
-                    cli._Email = correo;
-                    cli._Nombre = dr["nombre"].ToString();
-                    cli._Apellido = dr["apellido"].ToString();
-                    cli._NombreUsuario = dr["nombreUsuario"].ToString();
-                    cli._Foto = (byte[]) dr["foto"];
-
+                    cmd = new SqlCommand(@"SELECT * FROM Usuarios WHERE email = @email", cn);
+                    cmd.Parameters.Add(new SqlParameter("@email", correo));
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.Read())
+                    { 
+                        IDataRecord fila = dr;
+                        if (fila != null)
+                        {
+                            cli._Id = fila.IsDBNull(fila.GetOrdinal("id")) ? 0 : fila.GetInt32(fila.GetOrdinal("id"));
+                            cli._Email = correo;
+                            cli._Nombre = fila.IsDBNull(fila.GetOrdinal("nombre")) ? "" : fila.GetString(fila.GetOrdinal("nombre"));// dr["nombre"].ToString();
+                            cli._Apellido = fila.IsDBNull(fila.GetOrdinal("apellido")) ? "" : fila.GetString(fila.GetOrdinal("apellido"));// dr["apellido"].ToString();
+                            cli._NombreUsuario = fila.IsDBNull(fila.GetOrdinal("nombreUsuario")) ? "" : fila.GetString(fila.GetOrdinal("nombreUsuario")); // dr["nombreUsuario"].ToString();
+                            cli._Foto = fila.IsDBNull(fila.GetOrdinal("foto")) ? null : (byte[])fila.GetValue(fila.GetOrdinal("foto")); // (byte[])dr["foto"]; (byte [])obj.GetValue(0)
+                        }
+                    }
                     //Tambien hay que rellenar las listas de ingredientes, recetas, etc.
                     //cli.TraerSubordinadas();
 
