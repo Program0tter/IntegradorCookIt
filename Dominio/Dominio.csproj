@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Persistencia\Persistencia.csproj" />
+    <Folder Include="BD\" />
   </ItemGroup>
 
 </Project>

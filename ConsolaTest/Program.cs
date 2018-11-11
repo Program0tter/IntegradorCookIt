@@ -1,5 +1,5 @@
 ﻿using System;
-using Dominio;
+using Modelo;
 
 namespace ConsolaTest
 {
@@ -7,8 +7,6 @@ namespace ConsolaTest
     {
         static void Main(string[] args)
         {
-
-
 
             
             Ingrediente ing = new Ingrediente("Pepegrillo5", 100, 1, 10, 10, 10, false, false, false, false, 1, 1);

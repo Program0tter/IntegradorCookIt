@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dominio
+namespace Modelo
 {
     public abstract class IngredienteConCantidad
     {

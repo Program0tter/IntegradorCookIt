@@ -15,6 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Persistencia\Persistencia.csproj" />
+    <ProjectReference Include="..\..\Modelo\Modelo.csproj" />
   </ItemGroup>
 </Project>

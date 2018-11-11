@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Dominio
+namespace Modelo
 {
     public class RecetaDeHistorial : RecetaConFecha, IMapeador
     {

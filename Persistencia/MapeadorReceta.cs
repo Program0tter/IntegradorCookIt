@@ -7,7 +7,7 @@ using System.Text;
 namespace Dominio.BD
 {
     public class MapeadorReceta
-    {
+    {/*
         Receta _Receta { set; get; }
 
         public bool Actualizar()
@@ -67,6 +67,6 @@ namespace Dominio.BD
                 ManejadorConexion.CerrarConexion(cn);
             }
         }
-
+            */
     }
 }

@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 using System.Text;
 
-namespace Dominio
+namespace Modelo
 {
     public abstract class Usuario
     {

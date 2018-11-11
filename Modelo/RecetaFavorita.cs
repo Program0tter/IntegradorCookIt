@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Persistencia;
 
-namespace Dominio
+namespace Modelo
 {
     public class RecetaFavorita : RecetaConFecha, IMapeador
     {

@@ -4,7 +4,7 @@ using System.Text;
 using System.Drawing;
 using Persistencia;
 
-namespace Dominio
+namespace Modelo
 {
     public class PasoReceta : IMapeador
     {
