@@ -43,9 +43,12 @@ namespace Dominio
 
         public abstract object Login(string correo, string pass);
 
+        public abstract bool Insertar();
+
+        public abstract bool ActualizarPerfil();
 
 
-        
+
 
     }
 }

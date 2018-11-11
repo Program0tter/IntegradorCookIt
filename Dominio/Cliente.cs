@@ -76,6 +76,7 @@ namespace Dominio
                         }
                     }
                     //Tambien hay que rellenar las listas de ingredientes, recetas, etc.
+
                     //cli.TraerSubordinadas();
 
                     return cli;
@@ -95,6 +96,73 @@ namespace Dominio
                 ManejadorConexion.CerrarConexion(cn);
             }
         }
+
+        public override bool Insertar()
+        {
+            //if (!this.Validar()) return false;
+
+            SqlConnection cn = ManejadorConexion.CrearConexion();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"INSERT INTO Usuarios 
+                    VALUES (@email,@pass,@nombreUsuario,@tipo)";
+            cmd.Parameters.AddWithValue("@email", this._Email);
+            cmd.Parameters.AddWithValue("@pass", this._Pass);
+            cmd.Parameters.AddWithValue("@nombreUsuario", this._NombreUsuario);
+            cmd.Parameters.AddWithValue("@tipo", "");
+            cmd.Connection = cn;
+            try
+            {
+                ManejadorConexion.AbrirConexion(cn);
+                int filas = cmd.ExecuteNonQuery();
+                return filas == 1;
+            }
+            catch (SqlException ex)
+            {
+                System.Diagnostics.Debug.Assert(false, ex.Message);
+                return false;
+
+            }
+            finally
+            {
+                ManejadorConexion.CerrarConexion(cn);
+            }
+        }
+
+        public override bool ActualizarPerfil() {
+
+            SqlConnection cn = ManejadorConexion.CrearConexion();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"UPDATE Usuarios 
+                                SET nombre = @nombre, apellido = @apellido, nombreUsuario = @nomUsu, foto = @foto
+                                WHERE email = @email
+                                AND tipo = @tipo";
+            cmd.Parameters.AddWithValue("@email", this._Email);
+            cmd.Parameters.AddWithValue("@nombre", this._Nombre);
+            cmd.Parameters.AddWithValue("@apellido", this._Apellido);
+            cmd.Parameters.AddWithValue("@nombreUsuario", this._NombreUsuario);
+            cmd.Parameters.AddWithValue("@foto", this._Foto);
+            cmd.Parameters.AddWithValue("@tipo", "");
+            cmd.Connection = cn;
+            try
+            {
+                ManejadorConexion.AbrirConexion(cn);
+                int filas = cmd.ExecuteNonQuery();
+                return filas == 1;
+            }
+            catch (SqlException ex)
+            {
+                System.Diagnostics.Debug.Assert(false, ex.Message);
+                return false;
+
+            }
+            finally
+            {
+                ManejadorConexion.CerrarConexion(cn);
+            }
+        }
+
 
         private void TraerSubordinadas()
         {
