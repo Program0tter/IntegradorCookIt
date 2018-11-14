@@ -1,5 +1,6 @@
 ﻿using System;
-using Modelo;
+using WebApplication2;
+using WebApplication2.Models;
 
 namespace ConsolaTest
 {
@@ -21,7 +22,7 @@ namespace ConsolaTest
                 //cli._Pass = "Piripitiflautico2018";
                 //cli._NombreUsuario = cli._Email;                
                 //cli.Insertar();
-         
+                
                 usr = (Cliente)usr.Login("daniel.r.23@gmail.com", "Piripitiflautico2018");
                 usr._Nombre = "Daniel Leandro";
                 usr._Apellido = "Ramos Viñas";

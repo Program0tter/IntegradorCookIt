@@ -1,4 +1,5 @@
-﻿using Modelo;
+﻿
+using InterfazUsuario.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,10 @@ namespace InterfazUsuario
 
         private void btnLogin_Clicked(object sender, EventArgs e)
         {
-            Sistema sistema = Sistema.Instancia;
+
+            Cliente cli = new Cliente();
             try {
-                Cliente cli = sistema.LoginCliente(txtEmail.Text, txtContraseña.Text);
+                cli = (Cliente) cli.Login(txtEmail.Text, txtContraseña.Text);
             }catch(Exception ex)
             {
                 DisplayAlert("Error", "Error al loggearse: " + ex.Message, "ok");
