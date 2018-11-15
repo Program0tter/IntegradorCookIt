@@ -16,7 +16,7 @@ namespace WebApplication2.Models
 
         private void InicializarDatos()
         {
-            _Ingredientes = DalHelper.GetIngredientes();
+            _Ingredientes = ManejadorIngredientes.GetIngredientes();
         }
 
         public IEnumerable<Ingrediente> GetAll()
@@ -26,12 +26,12 @@ namespace WebApplication2.Models
 
         public Ingrediente Find(int id)
         {
-            return DalHelper.FindIngrediente(id);
+            return ManejadorIngredientes.FindIngrediente(id);
         }
 
         internal void Insert(Ingrediente ing)
         {
-            DalHelper.InsertarIng(ing);
+            ManejadorIngredientes.InsertarIng(ing);
         }
     }
 }

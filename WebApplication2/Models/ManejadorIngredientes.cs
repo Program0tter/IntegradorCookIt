@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebApplication2.Models
 {
-    public class DalHelper
+    public class ManejadorIngredientes
     {
 
         internal static List<Ingrediente> GetIngredientes()
