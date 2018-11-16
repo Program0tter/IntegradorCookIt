@@ -24,6 +24,12 @@ namespace WebApplication2.Controllers
             return cli;
         }
 
+        public IEnumerable<Cliente> GetAll()
+        {
+            var cli = _RepoCli.GetAll();
+            return cli;
+        }
+
         [HttpPost]
         public void PostCliente([FromBody]Cliente cli)
         {

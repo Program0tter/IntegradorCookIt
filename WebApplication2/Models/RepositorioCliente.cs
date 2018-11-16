@@ -19,6 +19,10 @@ namespace WebApplication2.Models
             return ManejadorClientes.Login(correo, pass);
         }
 
+        public List<Cliente> GetAll()
+        {
+            return ManejadorClientes.GetAll();
+        }
         public bool Registrar(Cliente cli)
         {
             return ManejadorClientes.Registrar(cli);

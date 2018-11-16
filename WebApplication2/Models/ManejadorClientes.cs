@@ -25,7 +25,7 @@ namespace WebApplication2.Models
             {
                 ManejadorConexion.AbrirConexion(cn);
                 cmd.ExecuteNonQuery();
-                RequestStatus = (bool)cmd.Parameters["@respuesta"].Value;
+                RequestStatus = (bool) cmd.Parameters["@respuesta"].Value;
 
                 if (RequestStatus)
                 {
@@ -45,13 +45,49 @@ namespace WebApplication2.Models
                             cli._Foto = fila.IsDBNull(fila.GetOrdinal("foto")) ? null : (byte[])fila.GetValue(fila.GetOrdinal("foto")); // (byte[])dr["foto"]; (byte [])obj.GetValue(0)                            
                         }
                     }
-
                     return cli;
                 }
                 else
                 {
                     throw new Exception("Login incorrecto, por favor intentelo nuevamente.");
                 }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Assert(false, ex.Message);
+                return null;
+            }
+            finally
+            {
+                ManejadorConexion.CerrarConexion(cn);
+            }
+        }
+
+        internal static List<Cliente> GetAll()
+        {
+            List<Cliente> lisCli = new List<Cliente>();
+            SqlConnection cn = ManejadorConexion.CrearConexion();
+            SqlCommand cmd = new SqlCommand(@"SELECT * FROM Usuarios", cn);
+            try
+            {
+                ManejadorConexion.AbrirConexion(cn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    IDataRecord fila = dr;
+                    if (fila != null)
+                    {
+                        Cliente cli = new Cliente();
+                            cli._Id = fila.IsDBNull(fila.GetOrdinal("id")) ? 0 : fila.GetInt32(fila.GetOrdinal("id"));
+                            cli._Email = fila.IsDBNull(fila.GetOrdinal("email")) ? "" : fila.GetString(fila.GetOrdinal("email"));// dr["nombre"].ToString();
+                            cli._Nombre = fila.IsDBNull(fila.GetOrdinal("nombre")) ? "" : fila.GetString(fila.GetOrdinal("nombre"));// dr["nombre"].ToString();
+                            cli._Apellido = fila.IsDBNull(fila.GetOrdinal("apellido")) ? "" : fila.GetString(fila.GetOrdinal("apellido"));// dr["apellido"].ToString();
+                            cli._NombreUsuario = fila.IsDBNull(fila.GetOrdinal("nombreUsuario")) ? "" : fila.GetString(fila.GetOrdinal("nombreUsuario")); // dr["nombreUsuario"].ToString();
+                            cli._Foto = fila.IsDBNull(fila.GetOrdinal("foto")) ? null : (byte[])fila.GetValue(fila.GetOrdinal("foto")); // (byte[])dr["foto"]; (byte [])obj.GetValue(0)                            
+                            lisCli.Add(cli);
+                    }
+                }
+                return lisCli;
             }
             catch (Exception ex)
             {
